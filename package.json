@@ -13,6 +13,7 @@
     "react-native",
     "mongodb"
   ],
+  "typings": "./lib/typings.d.ts",
   "homepage": "https://github.com/antoniopresto/react-native-local-mongodb",
   "repository": {
     "type": "git",
