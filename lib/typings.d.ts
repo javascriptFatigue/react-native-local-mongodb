@@ -32,17 +32,17 @@ declare module 'react-native-local-mongodb' {
     [key: string]: any;
   }
 
-  export interface Cursor {
+  export interface Cursor<T> {
     exec(): Promise<any>;
-    exec(cb: FindCallback): void;
-    skip(value: number): Cursor;
-    limit(value: number): Cursor;
-    sort(doc: Document): Cursor;
+    exec(cb: Callback<T>): void;
+    skip(value: number): Cursor<T>;
+    limit(value: number): Cursor<T>;
+    sort(doc: Document): Cursor<T>;
   }
 
   export type Query = any;
   export type Projection = any;
-  export type Callback = (err: Error | null) => void;
+  export type Callback<T = void> = (err: Error | null, value: T) => void;
   export type InsertCallback = (err: Error | null, doc: Document) => void;
   export type CountCallback = (err: Error | null, count: number) => void;
   export type FindCallback = (err: Error | null, docs: Document[]) => void;
@@ -68,11 +68,14 @@ declare module 'react-native-local-mongodb' {
     public getCandidates(query: Query, dontExpireStaleDocs: boolean, callback?: Callback): void;
     public insert(newDoc: Document, cb: InsertCallback): void;
     public createNewId(): number;
-    public count(query: Query, callback?: CountCallback): void;
-    public find(query: Query): Cursor;
-    public find(query: Query, projection: Projection): Cursor;
-    public find(query: Query, projection?: Projection, callback?: FindCallback): void;
-    public findOne(query: Query, projection?: Projection, callback?: FindOneCallback): void;
+    public count(query: Query): Cursor<number>;
+    public count(query: Query, callback: Callback<number>): void;
+    public find(query: Query): Cursor<Document[]>;
+    public find(query: Query, projection: Projection): Cursor<Document[]>;
+    public find(query: Query, projection: Projection, callback: Callback<Document[]>): void;
+    public findOne(query: Query): Cursor<Document>;
+    public findOne(query: Query, projection: Projection): Cursor<Document>;
+    public findOne(query: Query, projection: Projection, callback: Callback<Document>): void;
     public update(query: Query, doc: Document, options?: UpdateOptions, callback?: UpdateCallback): void;
     public remove(query: Query, options?: RemoveOptions, callback?: RemoveCallback): void;
     public loadDatabaseAsync(): Promise<void>;
