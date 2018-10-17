@@ -13,8 +13,8 @@ declare module 'react-native-local-mongodb' {
 
   export interface IndexOptions {
     fieldName: string;
-    unique: boolean;
-    sparse: boolean;
+    unique?: boolean;
+    sparse?: boolean;
     expireAfterSeconds?: number;
   }
 
