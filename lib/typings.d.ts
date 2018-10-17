@@ -69,6 +69,8 @@ declare module 'react-native-local-mongodb' {
     public insert(newDoc: Document, cb: InsertCallback): void;
     public createNewId(): number;
     public count(query: Query, callback?: CountCallback): void;
+    public find(query: Query): Cursor;
+    public find(query: Query, projection: Projection): Cursor;
     public find(query: Query, projection?: Projection, callback?: FindCallback): void;
     public findOne(query: Query, projection?: Projection, callback?: FindOneCallback): void;
     public update(query: Query, doc: Document, options?: UpdateOptions, callback?: UpdateCallback): void;
