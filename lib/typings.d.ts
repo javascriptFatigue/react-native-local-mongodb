@@ -32,6 +32,14 @@ declare module 'react-native-local-mongodb' {
     [key: string]: any;
   }
 
+  export interface Cursor {
+    exec(): Promise<any>;
+    exec(cb: FindCallback): void;
+    skip(value: number): Cursor;
+    limit(value: number): Cursor;
+    sort(doc: Document): Cursor;
+  }
+
   export type Query = any;
   export type Projection = any;
   export type Callback = (err: Error | null) => void;
