@@ -33,7 +33,7 @@ declare module 'react-native-local-mongodb' {
   }
 
   export interface Cursor<T> {
-    exec(): Promise<any>;
+    exec(): Promise<T>;
     exec(cb: Callback<T>): void;
     skip(value: number): Cursor<T>;
     limit(value: number): Cursor<T>;
