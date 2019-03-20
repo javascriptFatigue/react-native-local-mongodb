@@ -28,7 +28,8 @@
     "util": "0.10.3"
   },
   "peerDependencies": {
-    "react-native": "*"
+    "react-native": "*",
+    "@react-native-community/async-storage": "^1.2.1"
   },
   "devDependencies": {
     "chai": "3.2.0",
