@@ -1,6 +1,6 @@
 {
   "name": "react-native-local-mongodb",
-  "version": "2.2.5",
+  "version": "3.0.0",
   "author": "Antonio Presto <antoniopresto@gmail.com>",
   "contributors": [
     "Antonio Presto"
@@ -20,7 +20,7 @@
     "url": "git+ssh://git@github.com/antoniopresto/react-native-local-mongodb.git"
   },
   "dependencies": {
-    "async": "0.2.10",
+    "async": "2.6.2",
     "babel-preset-env": "1.6.1",
     "binary-search-tree": "0.2.5",
     "events": "1.1.0",

@@ -5,6 +5,7 @@
 Module name on npm is `react-native-local-mongodb`.
 
 #
+> Starting with version 3.0.0 we use `@react-native-community/async-storage` as a peer pependence
 > Starting with version 2.0.0, the `insert`,` update`, `remove`,` find`, and `findOne` methods no longer return promises - now they have a corresponding `Async` method (insertAsync, updateAsync, etc )
 #
 
