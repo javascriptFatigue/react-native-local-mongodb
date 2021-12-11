@@ -9,6 +9,7 @@ declare module 'react-native-local-mongodb' {
     beforeDeserialization?: Function;
     corruptAlertThreshold?: number;
     compareStrings?: Function;
+    storage: AsyncStorageStatic;
   }
 
   export interface IndexOptions {
