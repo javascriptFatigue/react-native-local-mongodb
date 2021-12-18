@@ -63,8 +63,9 @@ var Datastore = require('react-native-local-mongodb')
 
 
 // Type 2: Persistent datastore with manual loading
-var Datastore = require('react-native-local-mongodb')
-  , db = new Datastore({ filename: 'asyncStorageKey' });
+const Datastore = require('react-native-local-mongodb')
+  , db = new Datastore({ filename: 'asyncStorageKey', storage: AsyncStorage });
+  
 db.loadDatabase(function (err) {    // Callback is optional
   // Now commands will be executed
 });
@@ -72,7 +73,7 @@ db.loadDatabase(function (err) {    // Callback is optional
 
 // Type 3: Persistent datastore with automatic loading
 var Datastore = require('react-native-local-mongodb')
-  , db = new Datastore({ filename: 'asyncStorageKey', autoload: true });
+  , db = new Datastore({ filename: 'asyncStorageKey', storage: AsyncStorage, autoload: true });
 // You can issue commands right away
 ```
 
