@@ -29,8 +29,8 @@
     "url": "git+ssh://git@github.com/antoniopresto/react-native-local-mongodb.git"
   },
   "dependencies": {
-    "async": "2.6.2",
-    "binary-search-tree": "0.2.5",
+    "async": "2.6.4",
+    "@verluci/binary-search-tree": "0.3.0",
     "events": "1.1.0",
     "underscore": "^1.13.2",
     "util": "0.10.3"
