@@ -24,7 +24,7 @@ declare module "react-native-local-mongodb" {
     beforeDeserialization?: Function;
     corruptAlertThreshold?: number;
     compareStrings?: Function;
-    storage: StorageStatic;
+    storage: StorageStatic | AsyncStorageStatic;
   }
 
   export interface IndexOptions {
@@ -75,81 +75,81 @@ declare module "react-native-local-mongodb" {
   ) => void;
   export type RemoveCallback = (err: Error | null, numAffected: number) => void;
 
-  export default class Datastore {
+  export default class Datastore<T = MongoDocument> {
     constructor(options?: Options);
-
+  
     public loadDatabase(): void;
-
-    public getAllData(): any[];
-
-    public resetIndexes(newData: any): void;
-
+  
+    public getAllData(): T[];
+  
+    public resetIndexes(newData: T[]): void;
+  
     public ensureIndex(options: IndexOptions, callback?: Callback): void;
-
+  
     public removeIndex(fieldName: string, callback?: Callback): void;
-
-    public addToIndexes(doc: MongoDocument): void;
-
-    public removeFromIndexes(doc: MongoDocument): void;
-
-    public updateIndexes(oldDoc: MongoDocument, newDoc: MongoDocument): void;
-
+  
+    public addToIndexes(doc: T): void;
+  
+    public removeFromIndexes(doc: T): void;
+  
+    public updateIndexes(oldDoc: T, newDoc: T): void;
+  
     public getCandidates(
       query: Query,
       dontExpireStaleDocs: boolean,
       callback?: Callback
     ): void;
-
-    public insert(newDoc: MongoDocument, cb: InsertCallback): void;
-
+  
+    public insert(newDoc: T, cb: InsertCallback): void;
+  
     public createNewId(): number;
-
+  
     public count(query: Query): Cursor<number>;
     public count(query: Query, callback: Callback<number>): void;
-
-    public find(query: Query): Cursor<MongoDocument[]>;
-    public find(query: Query, projection: Projection): Cursor<MongoDocument[]>;
+  
+    public find(query: Query): Cursor<T[]>;
+    public find(query: Query, projection: Projection): Cursor<T[]>;
     public find(
       query: Query,
       projection: Projection,
-      callback: Callback<MongoDocument[]>
+      callback: Callback<T[]>
     ): void;
-
-    public findOne(query: Query): Cursor<MongoDocument>;
-    public findOne(query: Query, projection: Projection): Cursor<MongoDocument>;
+  
+    public findOne(query: Query): Cursor<T>;
+    public findOne(query: Query, projection: Projection): Cursor<T>;
     public findOne(
       query: Query,
       projection: Projection,
-      callback: Callback<MongoDocument>
+      callback: Callback<T>
     ): void;
-
+  
     public update(
       query: Query,
-      doc: MongoDocument,
+      doc: T,
       options?: UpdateOptions,
       callback?: UpdateCallback
     ): void;
-
+  
     public remove(
       query: Query,
       options?: RemoveOptions,
       callback?: RemoveCallback
     ): void;
-
+  
     public loadDatabaseAsync(): Promise<void>;
-
-    public findAsync(query: Query): Promise<MongoDocument[]>;
-
-    public findOneAsync(query: Query): Promise<MongoDocument>;
-
-    public insertAsync(newDoc: MongoDocument): Promise<MongoDocument>;
-
+  
+    public findAsync(query: Query): Promise<T[]>;
+  
+    public findOneAsync(query: Query): Promise<T>;
+  
+    public insertAsync(newDoc: T): Promise<T>;
+  
     public updateAsync(
       query: Query,
-      doc: MongoDocument,
+      doc: T,
       options?: UpdateOptions
-    ): Promise<MongoDocument>;
-
+    ): Promise<T>;
+  
     public removeAsync(query: Query, options?: RemoveOptions): Promise<number>;
-  }
+  }  
 }
