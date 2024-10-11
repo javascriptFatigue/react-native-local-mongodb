@@ -148,7 +148,7 @@ declare module "react-native-local-mongodb" {
       query: Query,
       doc: T,
       options?: UpdateOptions
-    ): Promise<T>;
+    ): Promise<number>;
   
     public removeAsync(query: Query, options?: RemoveOptions): Promise<number>;
   }  
